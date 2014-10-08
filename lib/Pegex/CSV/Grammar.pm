@@ -6,20 +6,9 @@ use constant file => 'share/csv.pgx';
 
 sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.57)
   {
-    '+grammar' => 'csv',
     '+toprule' => 'csv',
-    '+version' => '0.0.1',
-    'ANY' => {
-      '.rgx' => qr/\G./
-    },
-    'EOL' => {
-      '.rgx' => qr/\G\r?\n/
-    },
-    'EOS' => {
-      '.rgx' => qr/\G\z/
-    },
-    '_' => {
-      '.rgx' => qr/\G[\ \t]*/
+    'ALL' => {
+      '.rgx' => qr/\G[\s\S]/
     },
     'csv' => {
       '+min' => 0,
@@ -29,13 +18,13 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.57)
       '.rgx' => qr/\G[\ \t]*"((?:""|[^"])*)"/
     },
     'plain' => {
-      '.rgx' => qr/\G[\ \t]*([^,\r\n]*)/
+      '.rgx' => qr/\G[\ \t]*((?:[^,"\r\n]*[^\ \t,"\r\n])?)/
     },
     'row' => {
       '.all' => [
         {
           '+asr' => 1,
-          '.ref' => 'ANY'
+          '.ref' => 'ALL'
         },
         {
           '+max' => 1,
@@ -72,17 +61,7 @@ sub make_tree {   # Generated/Inlined by Pegex::Grammar (0.57)
           ]
         },
         {
-          '.ref' => '_'
-        },
-        {
-          '.any' => [
-            {
-              '.ref' => 'EOL'
-            },
-            {
-              '.ref' => 'EOS'
-            }
-          ]
+          '.rgx' => qr/\G[\ \t]*(?:\r?\n|\r|\z)/
         }
       ]
     }

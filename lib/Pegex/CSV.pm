@@ -3,6 +3,7 @@ our $VERSION = '0.0.1';
 
 use Pegex::Base;
 
+use Pegex::Parser;
 use Pegex::CSV::Grammar;
 use Pegex::CSV::LoL;
 
@@ -12,6 +13,7 @@ sub load {
     my $parser = Pegex::Parser->new(
         grammar => Pegex::CSV::Grammar->new,
         receiver => Pegex::CSV::LoL->new,
+        # debug => 1,
     );
 
     return $parser->parse($csv);

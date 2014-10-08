@@ -77,14 +77,14 @@ a , b , c~~
 
 === Quotes
 --- csv
-"", " ", "abc"
+"", " ", ",","abc"
 " def ", "  foo~~
   bar
   baz~~
 ", "
   Say ""WHAT""???"
 --- yaml
-- ['"', ' ', abc]
+- ['', ' ', ',', abc]
 - [' def ', "  foo  \n  bar\n  baz  \n", "\n  Say \"WHAT\"???"]
 
 === No final newline
@@ -98,3 +98,25 @@ a , b , c~~
 döt Net, Ingy
 --- yaml
 - [Ingy, döt Net]
+
+=== Single value lines
+--- csv
+foo
+  bar~~
+--- yaml
+- [foo]
+- [bar]
+
+=== Empty stream
+--- csv
+--- yaml
+[]
+
+=== Blank lines
+--- csv
+
+~~~~~~~~~~
+--- yaml
+- ['']
+- ['']
+

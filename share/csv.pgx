@@ -1,19 +1,12 @@
-%grammar csv
-%version 0.0.1
-
 csv: row*
 
 row:
-  =ANY      # Since trailing EOL is option, assert that some text remains
+  =ALL    # Since trailing EOL is option, assert that some text remains
   (double | plain)* % /- COMMA/
-  -
-  (EOL | EOS)
+  /- (: EOL | CR | EOS)/
 
-double: /- DOUBLE ((: DOUBLE DOUBLE | [^ DOUBLE])*) DOUBLE /
+double: /- DOUBLE ( (: DOUBLE DOUBLE | [^ DOUBLE] )* ) DOUBLE /
 
-# NOTE: This collects trailing whitespace, but we remove it in the receiver.
-# Might want to make a fancier regex, to do it here.
-plain: /- ( [^ COMMA CR NL]* ) /
+plain: /- ( (: [^ COMMA DOUBLE CR NL]* [^ SPACE TAB COMMA DOUBLE CR NL ] )? )/
 
-# Override whitespace to not include line endings:
 ws: / [ SPACE TAB ] /

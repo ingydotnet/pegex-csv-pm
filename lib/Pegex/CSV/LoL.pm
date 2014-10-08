@@ -8,15 +8,8 @@ sub got_row {
 }
 
 sub got_double {
-    my ($self, $got) = @_;
-    $got =~ s/""/"/g;
-    return length $got ? $got : '"';
-}
-
-sub got_plain {
-    my ($self, $got) = @_;
-    $got =~ s/^ *(.*?) *$/$1/;
-    return $got;
+    $_[1] =~ s/""/"/g;
+    return $_[1];
 }
 
 1;
