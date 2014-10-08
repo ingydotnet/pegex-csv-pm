@@ -36,7 +36,6 @@ TestML->new(
         my ($self, $struct) = @_;
         return str YAML::XS::Dump($struct->value);
     }
-
 }
 
 __DATA__
@@ -93,11 +92,12 @@ a , b , c~~
 - [foo bar, ' baz ']
 
 === Non ascii
---- SKIP
 --- csv
 döt Net, Ingy
+♥, ☺☻ , "Unicode™"
 --- yaml
-- [Ingy, döt Net]
+- [döt Net, Ingy]
+- [♥,☺☻,Unicode™]
 
 === Single value lines
 --- csv

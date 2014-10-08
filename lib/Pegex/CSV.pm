@@ -6,6 +6,7 @@ use Pegex::Base;
 use Pegex::Parser;
 use Pegex::CSV::Grammar;
 use Pegex::CSV::LoL;
+use Encode;
 
 sub load {
     my ($self, $csv) = @_;
@@ -16,7 +17,7 @@ sub load {
         # debug => 1,
     );
 
-    return $parser->parse($csv);
+    return $parser->parse(decode_utf8 $csv);
 }
 
 1;
