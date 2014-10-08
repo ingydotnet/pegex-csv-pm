@@ -24,7 +24,7 @@ TestML->new(
         my ($self, $csv) = @_;
         $csv = $csv->value;
         $csv =~ s/~/ /g;
-        return native(Pegex::CSV->load($csv));
+        return native(Pegex::CSV->new->load($csv));
     }
 
     sub yaml_load {
@@ -41,6 +41,7 @@ TestML->new(
 __DATA__
 %TestML 0.1.0
 
+# Diff = 1
 *csv.csv_load.yaml_dump == *yaml.yaml_load.yaml_dump
 
 === Simple
