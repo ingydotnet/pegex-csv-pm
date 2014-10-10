@@ -1,4 +1,9 @@
 ---
+version: 0.0.3
+date:    Fri Oct 10 12:42:53 CEST 2014
+changes:
+- Forgot to compile Pegex::CSV::Grammar
+---
 version: 0.0.2
 date:    Fri Oct 10 12:25:49 CEST 2014
 changes:
