@@ -1,4 +1,9 @@
 ---
+version: 0.0.2
+date:    Fri Oct 10 12:25:49 CEST 2014
+changes:
+- Make a 12.5% speed increase from v0.0.1
+---
 version: 0.0.1
 date:    Wed Oct  8 17:43:34 CEST 2014
 changes:
