@@ -1,4 +1,9 @@
 ---
+version: 0.0.4
+date:    Sat Oct 11 18:57:35 CEST 2014
+changes:
+- Make another 5% faster.
+---
 version: 0.0.3
 date:    Fri Oct 10 12:42:53 CEST 2014
 changes:
